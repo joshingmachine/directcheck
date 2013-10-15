@@ -11,20 +11,25 @@ function getSelection(callback) {
 	chrome.tabs.executeScript(null, { file:"selection.js" }); 
 };
 
+var i = 0;
+
+var form = document.createElement("form");
+form.setAttribute("method", "post");
+form.setAttribute("action", "http://directory.andrew.cmu.edu/search/basic/results");
+
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("id", "search_generic_search_terms);");        
+hiddenField.setAttribute("name", "search[generic_search_terms]");
+form.appendChild(hiddenField);
+document.body.appendChild(form);   
+
 function createDirectoryRequest(selectText) {
-	var form = document.createElement("form");
-	form.setAttribute("method", "post");
-	form.setAttribute("action", "http://directory.andrew.cmu.edu/search/basic/results");
-	form.setAttribute("target", "_blank");
+	window.open("", "_blank-" + i);
+    form.setAttribute("target", "_blank-"+i);
+    i++;
 
-	var hiddenField = document.createElement("input");
-	hiddenField.setAttribute("id", "search_generic_search_terms);");		
-	hiddenField.setAttribute("name", "search[generic_search_terms]");
-	hiddenField.setAttribute("value", selectText);
-	form.appendChild(hiddenField);
-	document.body.appendChild(form);		
-	form.submit();
-
+    hiddenField.setAttribute("value", selectText);    
+    form.submit();
 }
 
 chrome.contextMenus.create({title: 'DirectCheck "%s"', 
