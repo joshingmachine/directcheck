@@ -1,0 +1,16 @@
+{
+	"name": "DirectCheck",
+	"description": "Right-click text to search the Carnegie Mellon directory. 
+		Developed by Josh Smith for The Tartan, Carnegie Mellon's student newspaper since 1906.",
+	"manifest_version": 2,
+	"version": "0.2",
+	"permissions": ["contextMenus"],
+	"icons": {
+		"16": "icon-bitty.png",
+		"48": "icon-small.png",
+		"128": "icon-large.png"
+	},
+	"background": {
+    	"scripts": ["rightclick.js"]
+  	}
+}
